@@ -4,16 +4,18 @@ from  database import  connection
 from schema import Records
 import  joblib
 
+model=joblib.load('rain_model.pkl')
+
 app=FastAPI()
 
 
-@app.get("/get")
+
+
+@app.get("/")
 def get():
     return {
         'message': "Rain_forcast_model_running"
     }
-
-model=joblib.load("rain_model.pkl")
 
 
 @app.post("/predict")
@@ -28,7 +30,7 @@ def predict(data:Records):
     con=connection()
     cursor=con.cursor()
 
-    query=""" INSERT INTO rain_check(Temperature,Humidity,Wind_Speed,Cloud_Cover,
+    query=""" INSERT INTO rain_check (Temperature,Humidity,Wind_Speed,Cloud_Cover,
     Pressure,Result)
     VALUES(%s,%s,%s,%s,%s,%s)
     """

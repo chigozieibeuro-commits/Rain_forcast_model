@@ -1,6 +1,6 @@
 import  psycopg2
 
-def connectio():
+def connection():
     con=psycopg2.connect(
         host="db",
         user="postgres",

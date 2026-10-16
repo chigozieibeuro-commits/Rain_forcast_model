@@ -1,0 +1,6 @@
+uvicorn
+joblib
+pandas
+scikit_learn
+pydantic
+psycopg2
